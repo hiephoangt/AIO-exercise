@@ -1,3 +1,6 @@
+import streamlit as st
+
+
 def levenshtein_distance(src, target):
     result = []
     del_cost = 0
@@ -21,6 +24,26 @@ def levenshtein_distance(src, target):
                 result[idx][jdx] = min(del_cost, ins_cost, sub_cost)
     return result[-1][-1]
 
+
+def load_vocab(file_path):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+    words = sorted(set([line.strip().lower() for line in lines]))
+    return words
+
+
+st.title('Word Correction')
+word = st.text_input("Your Word")
+vocabs = load_vocab(r"D:\Github\AIO-exercise\Module_1\vocab.txt")
+
+if st.button('Compute'):
+    distances = dict()
+    for vocab in vocabs:
+        distance = levenshtein_distance(word, vocab)
+        distances[vocab] = distance
+    sorted_distances = sorted(distances.items(), key=lambda x: x[1])
+    correct_word = sorted_distances[0][0]
+    st.write(correct_word)
 
 if __name__ == '__main__':
     assert levenshtein_distance("hi", "hello") == 4
