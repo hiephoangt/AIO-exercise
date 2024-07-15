@@ -49,10 +49,10 @@ agree = st.checkbox('I agree')
 if agree:
     st.write('You agree')
 
-st.radio('List colors:', ['Yellow', 'Red', 'Green'],
+st.radio('List colorss:', ['Yellow', 'Red', 'Green'],
          captions=['Vàng', 'Đỏ', 'Xanh'])
 
-st.selectbox('List colors:', ['Yellow', 'Red', 'Green'])
+st.selectbox('List colorssss:', ['Yellow', 'Red', 'Green'])
 options = st.multiselect(
     'List colors:', ['Yellow', 'Red', 'Green'], ['Yellow'])
 
