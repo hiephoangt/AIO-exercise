@@ -132,5 +132,5 @@ class KMeans:
         plt.ylabel('Sepal width')
         plt.show()
 
-kmeans = KMeans(k=2)
+kmeans = KMeans(k=3)
 kmeans.fit(data)
